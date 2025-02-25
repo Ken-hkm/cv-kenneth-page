@@ -9,8 +9,15 @@ async function fetchData() {
   
     try {
       const response = await fetch(
-        "https://3f0tv6ipo2.execute-api.ap-southeast-3.amazonaws.com/dev/personal-info"
-      );
+        "https://3f0tv6ipo2.execute-api.ap-southeast-3.amazonaws.com/dev/api/v1/personal-info",
+    {
+      method: "GET",
+      headers: {
+        "X-API-KEY": "wRNbm38KGBO79fj",
+        "Content-Type": "application/json",
+      },
+    }
+  );
       if (!response.ok) {
         throw new Error("Failed to fetch data");
       }
@@ -36,8 +43,6 @@ async function fetchData() {
       githubLink.textContent = data.githubUrl;
       githubLink.href = data.githubUrl;
   
-      // Show the container
-      infoContainer.style.display = "block";
     } catch (error) {
       loadingText.style.display = "none";
       errorDiv.style.display = "block";
